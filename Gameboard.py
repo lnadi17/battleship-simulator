@@ -1,3 +1,8 @@
+# import all necessary libraries
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.colors as colors
+
 class Gameboard:
     # static variables (they aren't intended to change)
     nrows, ncols = 10, 10
