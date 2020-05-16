@@ -68,8 +68,9 @@ class Gameboard:
         self.shot_count = 0
         self.hit_count = 0
         self.board = np.ones([Gameboard.nrows, Gameboard.ncols, 3])
-        for line in self.ax.get_lines():
-            line.set_marker(None)
+        #for line in self.ax.get_lines():
+        #    line.set_marker(None)
+        self.ax.lines = []
         
     # updates gameboard and returns True if boat was hit
     def shoot(self, location):
