@@ -15,6 +15,8 @@ class Gameboard:
     def __init__(self):
         # create board image (initially completely white)
         self.board = np.ones([Gameboard.nrows, Gameboard.ncols, 3])
+        # create marker locations array
+        self.markers = []
 
         # create figure and axes
         self.fig, self.ax = plt.subplots()
@@ -68,8 +70,8 @@ class Gameboard:
         self.shot_count = 0
         self.hit_count = 0
         self.board = np.ones([Gameboard.nrows, Gameboard.ncols, 3])
-        #for line in self.ax.get_lines():
-        #    line.set_marker(None)
+        self.markers = []
+        # removes markers from axes
         self.ax.lines = []
         
     # updates gameboard and returns True if boat was hit
@@ -79,8 +81,8 @@ class Gameboard:
         row = ord(location[0]) - ord('A')
         col = int(location[1:]) - 1
 
-        # draw grey hit marker
-        self.ax.plot(col, row, marker='X', markersize=15, color='darkgray')
+        # store hit marker location
+        self.markers.append([col, row])
 
         # check if boat's at current location and change the color of square to red (destroy ship) if so
         if (self.board[row, col] == Gameboard.boat_color).all():
@@ -126,6 +128,8 @@ class Gameboard:
         self.update()
         return self.ax
     
-    # applies changes made to board array
+    # applies changes made to board
     def update(self):
+        for m in self.markers:
+            self.ax.plot(m[0], m[1], marker='X', markersize=15, color='darkgray')
         self.ax.imshow(self.board, origin='upper')
