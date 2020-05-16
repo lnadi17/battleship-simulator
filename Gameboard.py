@@ -93,6 +93,36 @@ class Gameboard:
         else:
             return False
         
+    # returns array of neighbouring locations of passed location (diagonal direction doesn't count)
+    def neighbours(self, location):
+        result = []
+
+        up = chr(ord(location[0]) - 1) + location[1:]
+        if self.in_range(up):
+            result.append(up)
+
+        down = chr(ord(location[0]) + 1) + location[1:]
+        if self.in_range(down):
+            result.append(down)
+
+        left = location[0] + str(int(location[1:]) - 1)
+        if self.in_range(left):
+            result.append(left)
+
+        right = location[0] + str(int(location[1:]) + 1)
+        if self.in_range(right):
+            result.append(right)
+
+        return result
+    
+    # returns True if passed location is within bounds
+    def in_range(self, location):
+        row = ord(location[0]) - ord('A')
+        col = int(location[1:]) - 1
+        if row >= 0 and row < Gameboard.nrows and col >= 0 and col < Gameboard.ncols:
+            return True
+        return False
+        
     # returns True if all ships are destroyed
     def is_game_over(self):
         if self.alive_boat_count == 0:
