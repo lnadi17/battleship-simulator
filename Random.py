@@ -1,4 +1,5 @@
 import random as pyrandom
+from Gameboard import *
 
 class Random:
     def __init__(self):
@@ -23,6 +24,10 @@ class Random:
     # returns random location from possible locations list
     def choose_from_all(self):
         return pyrandom.choice(self.possible_locations)
+    
+    # removes passed location from available locations list 
+    def make_unavailable(self, location):
+        self.available_locations.remove(location)
     
     # generates random locations for ships of various length and returns them
     # WARGING: current implementation is not optimal and should be changed sometime in the future
