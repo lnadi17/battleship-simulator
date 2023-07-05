@@ -15,4 +15,5 @@ Battleship game simulator based on [DataGenetics' battleship analysis.](http://w
 - **Gameboard.py** - The Gameboard class represents a game board for a Battleship game. It provides methods to hide and unhide boats, simulate shooting, track game statistics, and generate a visual representation of the board.
 - **Random.py** - This class generates random locations for ships in a game. It maintains lists of possible and available locations on the game board. It provides methods for generating random locations for ships of various lengths, and ensures these generated locations are legal.
 
-## 
+## Learn More
+If you want to learn more about these strategies without delving deep into the code, you can watch the [Vsauce2 video](https://www.youtube.com/watch?v=LbALFZoRrw8) that discusses these strategies. The video is based on the same article that inspired my implementation.
